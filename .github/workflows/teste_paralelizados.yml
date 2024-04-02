@@ -7,17 +7,18 @@ on:
 jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a tarefa
   cypress-run:
     runs-on: ubuntu-latest #define o SO que a VM irá usar
+    timeout-minutes: 1 #se o job não completar em 1 minuto, ele será cancelado
     strategy:
       fail-fast: false #quer que pare a execução caso um teste falhe
       matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] #Aqui diz em quantas containers serão dividos os testes
+        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #Aqui diz em quantas containers serão dividos os testes
     steps:
       - name: Checkout 
         uses: actions/checkout@v4 # aqui faz o checkout para baixar o projeto no workspace do github
                                   # faz um clone da branch que eu to e roda os comandos nela
       - name: Rodando os testes com Cypress-split
         uses: cypress-io/github-action@v6
-        
+
         env:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
