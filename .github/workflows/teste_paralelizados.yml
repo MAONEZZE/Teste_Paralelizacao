@@ -18,8 +18,6 @@ jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a 
                                   # faz um clone da branch que eu to e roda os comandos nela
       - name: Rodando com Cypress-split
         uses: cypress-io/github-action@v6
-        with:
-          start: npm run cy:parallel
 
         env:
           SPLIT: ${{ strategy.job-total }}
