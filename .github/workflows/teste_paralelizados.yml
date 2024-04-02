@@ -16,8 +16,12 @@ jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a 
       - name: Checkout 
         uses: actions/checkout@v4 # aqui faz o checkout para baixar o projeto no workspace do github
                                   # faz um clone da branch que eu to e roda os comandos nela
-      - name: Rodando os testes com Cypress-split
+      - name: Rodando com Cypress-split
         uses: cypress-io/github-action@v6
+
+      - name: Rodando com Cypress-parallel
+        run: |
+          npm run cy:parallel
 
         env:
           SPLIT: ${{ strategy.job-total }}
