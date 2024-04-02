@@ -9,8 +9,8 @@ jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a 
     runs-on: ubuntu-latest #define o SO que a VM irá usar
     strategy:
       fail-fast: false #quer que pare a execução caso um teste falhe
-      matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #Aqui diz em quantas containers serão dividos os testes
+      # matrix:
+      #   containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #Aqui diz em quantas containers serão dividos os testes
     steps:
       - name: Checkout 
         uses: actions/checkout@v4 # aqui faz o checkout para baixar o projeto no workspace do github
@@ -18,6 +18,6 @@ jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a 
       - name: Rodando os testes com Cypress-split
         uses: cypress-io/github-action@v6
         
-        env:
-          SPLIT: ${{ strategy.job-total }}
-          SPLIT_INDEX: ${{ strategy.job-index }}
+        # env:
+        #   SPLIT: ${{ strategy.job-total }}
+        #   SPLIT_INDEX: ${{ strategy.job-index }}
