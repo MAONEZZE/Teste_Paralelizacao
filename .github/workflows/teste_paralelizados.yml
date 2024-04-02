@@ -7,7 +7,7 @@ on:
 jobs: #são os passo-a-passos que o workflow irá executar a fim de finalizar a tarefa
   cypress-run:
     runs-on: ubuntu-latest #define o SO que a VM irá usar
-    timeout-minutes: 1 #se o job não completar em 1 minuto, ele será cancelado
+    timeout-minutes: 2 #se o job não completar em 1 minuto, ele será cancelado
     strategy:
       fail-fast: false #quer que pare a execução caso um teste falhe
       matrix:
