@@ -1,6 +1,11 @@
 {
   "devDependencies": {
     "cypress": "^13.7.1",
+    "cypress-parallel": "^0.14.0",
     "cypress-split": "^1.21.2"
+  },
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:parallel": "cypress-parallel -s cy:run -t 2 -d <your-cypress-specs-folder> -a '\"<your-cypress-cmd-args>\"'"
   }
 }
